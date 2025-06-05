@@ -1,0 +1,53 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    text-align: center;
+}
+
+.main-container {
+    display: flex;
+    justify-content:space-around;
+}
+
+aside {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    width: 40vw;
+    height: 100vh;
+    border: 1px solid black;
+    padding: 10px;
+}
+
+main {
+    width: 100%;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+}
+
+footer {
+        text-align: right;
+        padding: 10px;
+}
+
+input {
+    display: block;
+}
+
+h2 {
+    text-align: center;
+}
+
+form {
+    padding: 10px;
+}
+
+button {
+    padding: 1px 5px;
+    margin:5px 5px 5px 0;
+}
