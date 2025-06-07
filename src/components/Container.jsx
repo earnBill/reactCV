@@ -1,6 +1,7 @@
 import GeneralInfoForm from "./GeneralInfoForm";
 import EducationExperienceForm from "./EducationExperienceForm";
 import PracticalExperienceForm from "./PracticalExperienceForm";
+import Resume from "./Resume";
 
 export default function Container() {
   return (
@@ -17,6 +18,7 @@ export default function Container() {
         </aside>
         <main>
           <h2>Preview CV</h2>
+          <Resume />
         </main>
       </div>
             <footer>Bill Tas 2025</footer>
