@@ -1,4 +1,4 @@
-export default function EducationExperienceForm() {
+export default function EducationExperienceForm({updateEducation, name, email, phone}) {
   return (
     <div>
       <h3>Education Experience</h3>
@@ -9,9 +9,16 @@ export default function EducationExperienceForm() {
         <input type="text" name="title-of-study" id="title-of-study" />
         <label htmlFor="date-of-study">Date of study</label>
         <input type="text" name="date-of-study" id="date-of-study" />
-        <button>Ok</button>
-        <button>Cancel</button>
+        <button onClick={updateEducation}>Ok</button>
+        <button onClick={updateEducationInfo}>Cancel</button>
       </form>
     </div>
   )
 }
+
+function updateEducationInfo(event) {
+  event.preventDefault();
+  const schoolInput = document.querySelector('#school-name');
+  console.log(schoolInput);
+}
+
