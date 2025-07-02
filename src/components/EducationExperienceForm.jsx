@@ -1,7 +1,8 @@
-export default function EducationExperienceForm({updateEducation, name, email, phone}) {
+
+export default function EducationExperienceForm({updateEducation, clear, name, email, phone}) {
   return (
     <div>
-      <h3>Education Experience</h3>
+      <h3>Education </h3>
       <form action="">
         <label htmlFor="school-name">School Name</label>
         <input type="text" name="school-name" id="school-name"/>
@@ -10,15 +11,19 @@ export default function EducationExperienceForm({updateEducation, name, email, p
         <label htmlFor="date-of-study">Date of study</label>
         <input type="text" name="date-of-study" id="date-of-study" />
         <button onClick={updateEducation}>Ok</button>
-        <button onClick={updateEducationInfo}>Cancel</button>
+        <button onClick={clearEducationInfo}>Clear</button>
       </form>
     </div>
   )
 }
 
-function updateEducationInfo(event) {
+function clearEducationInfo(event) {
   event.preventDefault();
-  const schoolInput = document.querySelector('#school-name');
-  console.log(schoolInput);
+  const schoolName = document.querySelector('#school-name');
+  const titleOfStudy = document.querySelector('#title-of-study');
+  const dateOfStudy = document.querySelector('#date-of-study');
+  schoolName.value = '';
+  titleOfStudy.value = '';
+  dateOfStudy.value = '';
+  console.log('Clear education');
 }
-
