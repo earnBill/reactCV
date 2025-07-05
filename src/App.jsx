@@ -9,6 +9,8 @@ function App() {
   const [school, setSchool] = useState('');
   const [study, setStudy] = useState('');
   const [date, setDate] = useState('');
+  const [company, setCompany] = useState('');
+  const [position, setPosition] = useState('');
   const [updateInfo, setUpdateInfo] = useState({
     general: { 
       name:"Bill",
@@ -16,9 +18,9 @@ function App() {
       phone:"6988878785",
     },
     education: [{
-      schoolName:"Iek Diolkos",
-      titleStudy:"IT ",
-      dateStudy:"2002",
+      schoolName:"",
+      titleStudy:" ",
+      dateStudy:"",
     }],
     experience: [{
       companyName:"Bnb",
@@ -51,6 +53,7 @@ function App() {
               editEducation={editEducationInfo}
             />
             <PracticalExperienceForm 
+              updateCompany={changeCompany}
               updateExperience={updateExperienceInfo} 
               editExperience={editExperienceInfo}
               />
@@ -99,18 +102,25 @@ function App() {
     setDate(e.target.value);
     console.log(date);
   }
+  function changeCompany(e) {
+    setCompany(e.target.value);
+  }
   function editGeneralInfo(event) {
     console.log("Edit general info");
   }
   function updateEducationInfo(event) {
     console.log('Update education');
-    const newEducation = [...updateInfo.education]; 
-    newEducation[0] = {
-       ...newEducation[0], 
+    const newEducation = [...updateInfo.education, {
       schoolName: school, 
       titleStudy: study, 
       dateStudy: date 
-    };
+    }]; 
+    // newEducation[0] = {
+    //    ...newEducation[0], 
+    //   schoolName: school, 
+    //   titleStudy: study, 
+    //   dateStudy: date 
+    // };
     const newInfo = {...updateInfo, education: newEducation};
     setUpdateInfo(newInfo);
     console.log(updateInfo)

@@ -13,9 +13,15 @@ export default function Resume({personalInfo, educationInfo, experienceInfo}) {
         <div className="education-section">
           <h3>Education</h3>
           <div className="education">
-            {educationInfo[0].schoolName} 
-            {educationInfo[0].titleStudy}
-            {educationInfo[0].dateStudy}   
+            {educationInfo.map((educ, index) => {
+              if(index) {
+                return (
+                <div key={index}>
+                  {educ.schoolName}, {educ.titleStudy}, {educ.dateStudy} 
+                </div>
+                );
+              }
+            })}    
           </div>
         </div>
         <div className="experience-section">
