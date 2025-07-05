@@ -6,19 +6,19 @@ import { useState } from "react";
 
 
 function App() {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('');
-  const [updateGeneralInfo, setUpdateGeneralInfo] = useState({
+  const [school, setSchool] = useState('');
+  const [study, setStudy] = useState('');
+  const [date, setDate] = useState('');
+  const [updateInfo, setUpdateInfo] = useState({
     general: { 
       name:"Bill",
       email:"bnbtrikala@gmail.com",
       phone:"6988878785",
     },
     education: [{
-      schoolName:"1",
-      titleStudy:"1",
-      dateStudy:"1",
+      schoolName:"Iek Diolkos",
+      titleStudy:"IT ",
+      dateStudy:"2002",
     }],
     experience: [{
       companyName:"Bnb",
@@ -37,16 +37,30 @@ function App() {
       <div className="main-container">
         <aside>
           <h2>Your Info</h2>
-            <GeneralInfoForm updateGeneralInfo={updatelInfo} editGeneralInfo={editGeneralInfo}/>
-            <EducationExperienceForm updateEducation={updateEducationInfo} editEducation={editEducationInfo}/>
-            <PracticalExperienceForm updateExperience={updateExperienceInfo} editExperience={editExperienceInfo}/>
+            <GeneralInfoForm 
+              updateName={changeName} 
+              updateEmail={changeMail}
+              updatePhone={changePhone} 
+              editGeneralInfo={editGeneralInfo}
+            />
+            <EducationExperienceForm 
+              updateSchool={changeSchool}
+              updateStudy={changeStudy}
+              updateDate={changeDate}
+              updateEducation={updateEducationInfo} 
+              editEducation={editEducationInfo}
+            />
+            <PracticalExperienceForm 
+              updateExperience={updateExperienceInfo} 
+              editExperience={editExperienceInfo}
+              />
         </aside>
         <main>
           <h2>Preview CV</h2>
           <Resume 
-            personalInfo={updateGeneralInfo.general}
-            educationInfo={updateGeneralInfo.education}
-            experienceInfo={updateGeneralInfo.experience}
+            personalInfo={updateInfo.general}
+            educationInfo={updateInfo.education}
+            experienceInfo={updateInfo.experience}
             />
         </main>
       </div>
@@ -54,17 +68,52 @@ function App() {
     </div>
     );
   
-  function updatelInfo(e) {
-    setName(e.target.value);
-    setUpdateGeneralInfo(updateGeneralInfo.general.name = 'kostas'); 
-    console.log(name);
+  function changeName(e) {
+    const newName = {...updateInfo.general, name: e.target.value}
+    const newInfo = {...updateInfo, general: newName}
+    setUpdateInfo(newInfo);
+    // setUpdateInfo({...updateInfo, general :{...updateInfo.general, name: e.target.value}}); 
+    console.log(e.target.value);
     console.log('Update general info')
+  }
+
+  function changeMail(e) {
+    const newMail = {...updateInfo.general, email: e.target.value};
+    const newInfo = {...updateInfo, general: newMail};
+    setUpdateInfo(newInfo);
+  }
+  function changePhone(e) {
+    const newPhone = {...updateInfo.general, phone: e.target.value}
+    const newInfo = {...updateInfo, general: newPhone};
+    setUpdateInfo(newInfo);
+  }
+  function changeSchool(e) {
+    setSchool(e.target.value);
+    console.log(school);
+  }
+  function changeStudy(e) {
+    setStudy(e.target.value);
+    console.log(study); 
+  }
+  function changeDate(e) {
+    setDate(e.target.value);
+    console.log(date);
   }
   function editGeneralInfo(event) {
     console.log("Edit general info");
   }
   function updateEducationInfo(event) {
     console.log('Update education');
+    const newEducation = [...updateInfo.education]; 
+    newEducation[0] = {
+       ...newEducation[0], 
+      schoolName: school, 
+      titleStudy: study, 
+      dateStudy: date 
+    };
+    const newInfo = {...updateInfo, education: newEducation};
+    setUpdateInfo(newInfo);
+    console.log(updateInfo)
   }
   function editEducationInfo(event) {
     console.log('Edit education');

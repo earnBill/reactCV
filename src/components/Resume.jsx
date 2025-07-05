@@ -13,13 +13,17 @@ export default function Resume({personalInfo, educationInfo, experienceInfo}) {
         <div className="education-section">
           <h3>Education</h3>
           <div className="education">
-            {educationInfo[0].schoolName}    
+            {educationInfo[0].schoolName} 
+            {educationInfo[0].titleStudy}
+            {educationInfo[0].dateStudy}   
           </div>
         </div>
         <div className="experience-section">
           <h3>Professional experience</h3>
           <div className="experience">
             {experienceInfo[0].companyName}
+            {experienceInfo[0].positionTitle}
+            {experienceInfo[0].responsibilities}
           </div>
         </div>
       </div>
