@@ -8,9 +8,14 @@ header {
     text-align: center;
 }
 
+.container {
+    background-color: #f3f4f6;
+}
+
 .main-container {
     display: flex;
     justify-content:space-around;
+    background-color: #f3f4f6;
 }
 
 aside {
@@ -19,24 +24,28 @@ aside {
     align-items: left;
     width: 40vw;
     height: 100vh;
-    border: 1px solid black;
     padding: 10px;
+    margin: 20px;
+    background-color: #f3f4f6;
+    height: 100%;
 }
 
 main {
     width: 100%;
-    border: 1px solid black;
     display: flex;
     flex-direction: column;
+    margin: 20px;
 }
 
 footer {
-        text-align: right;
-        padding: 10px;
+    text-align: right;
+    padding: 10px;
 }
 
 input {
     display: block;
+    border: none;
+    padding: 5px;
 }
 
 h2 {
@@ -50,4 +59,46 @@ form {
 button {
     padding: 1px 5px;
     margin:5px 5px 5px 0;
+}
+
+.resume-top {
+    background-color: #0e374e;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    width: 100%;
+}
+.personal-details {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    
+}
+
+.personal-details div {
+    padding: 10px;
+}
+
+input {
+    background-color: #f3f4f6;
+}
+
+.form-general-info {
+    background-color: #f3f4f6;
+}
+
+.section-style {
+    background-color: white;
+    border-radius: 20px;
+    margin: 10px;
+    padding: 10px;
+}
+
+.resume-container {
+    background-color: white;
+    height: 100%;
+}
+
+.resume-body {
+    padding: 20px;
 }

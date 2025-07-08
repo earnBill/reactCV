@@ -2,11 +2,13 @@ export default function Resume({personalInfo, educationInfo, experienceInfo}) {
   return (
     <div className="resume-container">
       <div className="resume-top">
-        <h1>Person Name</h1>
         <div className="personal-info">
-          {personalInfo.name} <br/>
-          {personalInfo.email} <br/>
-          {personalInfo.phone}
+          <h1>{personalInfo.name}</h1>
+          <div className="personal-details">
+            <div className="email">{personalInfo.email}</div> 
+            <div className="phone">{personalInfo.phone}</div>
+          </div>
+          
         </div>
       </div>
       <div className="resume-body">
@@ -27,9 +29,14 @@ export default function Resume({personalInfo, educationInfo, experienceInfo}) {
         <div className="experience-section">
           <h3>Professional experience</h3>
           <div className="experience">
-            {experienceInfo[0].companyName}
-            {experienceInfo[0].positionTitle}
-            {experienceInfo[0].responsibilities}
+            {experienceInfo.map((exp, index) => {
+              return (
+                <div key={index}>
+                  {exp.companyName}, {exp.positionTitle}, {exp.responsibilities}, 
+                  <div>{exp.from} {'-'} {exp.until}</div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>

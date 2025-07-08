@@ -11,21 +11,24 @@ function App() {
   const [date, setDate] = useState('');
   const [company, setCompany] = useState('');
   const [position, setPosition] = useState('');
+  const [respo, setRespo] = useState('');
+  const [from, setFrom] = useState('')
+  const [until,setUntil] = useState('')
   const [updateInfo, setUpdateInfo] = useState({
     general: { 
-      name:"Bill",
-      email:"bnbtrikala@gmail.com",
+      name:"Jim Doee",
+      email:"jimdoee@gmail.com",
       phone:"6988878785",
     },
     education: [{
-      schoolName:"",
-      titleStudy:" ",
-      dateStudy:"",
+      schoolName:"IEK Diolkos",
+      titleStudy:"Software Dveloper",
+      dateStudy:"2004",
     }],
     experience: [{
-      companyName:"Bnb",
-      positionTitle:"IT Technician",
-      responsibilities:"Fix Computers",
+      companyName:"Microsoft",
+      positionTitle:"Developer",
+      responsibilities:"Create software",
       from:"",
       until:"",
     }]
@@ -54,12 +57,15 @@ function App() {
             />
             <PracticalExperienceForm 
               updateCompany={changeCompany}
+              updatePosition={changePosition}
+              updateRespo={changeRespo}
+              updateFrom={changeFrom}
+              updateUntil={changeUntil}
               updateExperience={updateExperienceInfo} 
               editExperience={editExperienceInfo}
-              />
+            />
         </aside>
         <main>
-          <h2>Preview CV</h2>
           <Resume 
             personalInfo={updateInfo.general}
             educationInfo={updateInfo.education}
@@ -105,8 +111,21 @@ function App() {
   function changeCompany(e) {
     setCompany(e.target.value);
   }
+  function changePosition(e) {
+    setPosition(e.target.value);
+  }
+  function changeRespo(e) {
+    setRespo(e.target.value);
+  }
   function editGeneralInfo(event) {
     console.log("Edit general info");
+  }
+  function changeFrom(e) {
+    setFrom(e.target.value);
+    console.log(e.target.value)
+  }
+  function changeUntil(e) {
+    setUntil(e.target.value);
   }
   function updateEducationInfo(event) {
     console.log('Update education');
@@ -125,12 +144,24 @@ function App() {
     setUpdateInfo(newInfo);
     console.log(updateInfo)
   }
+
   function editEducationInfo(event) {
     console.log('Edit education');
   }
+
   function updateExperienceInfo(event) {
     console.log('Update experience');
+    setUpdateInfo({...updateInfo,
+                  experience:[...updateInfo.experience,{
+                    companyName: company,
+                    positionTitle: position,
+                    responsibilities: respo,
+                    from:from,
+                    until:until
+                  }]})
+    console.log(updateInfo);
   }
+
   function editExperienceInfo(event) {
     console.log('Edit experience');
   }

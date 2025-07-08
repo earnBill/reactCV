@@ -1,7 +1,7 @@
 
 export default function EducationExperienceForm({updateSchool, updateStudy, updateDate, updateEducation,editEducation}) {
   return (
-    <div>
+    <div className="section-style">
       <h3>Education </h3>
       <form onSubmit={e => e.preventDefault()}>
         <label htmlFor="school-name">School Name</label>
