@@ -41,7 +41,6 @@ function App() {
       </header>
       <div className="main-container">
         <aside>
-          <h2>Your Info</h2>
             <GeneralInfoForm 
               updateName={changeName} 
               updateEmail={changeMail}
