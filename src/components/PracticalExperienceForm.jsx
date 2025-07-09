@@ -1,7 +1,7 @@
 export default function PracticalExperienceForm({updateCompany, updatePosition, updateRespo, updateFrom, updateUntil, updateExperience, editExperience}) {
   return (
     <div className="experience section-style">
-        <h3>Experience</h3>
+        <h2>Experience</h2>
         <form onSubmit={e => e.preventDefault()}>
           <label htmlFor="company">Company name</label>
           <input type="text" name="company" id="company" onChange={updateCompany}/>

@@ -2,7 +2,7 @@ export default function GeneralInfoForm({updateName, updateEmail, updatePhone, e
 
   return (
     <div className="form-general-info section-style">
-      <h3>Personal Details</h3>
+      <h2>Personal Details</h2>
       <form onSubmit={e => e.preventDefault()}>
         <label htmlFor="name">Name</label>
         <input type="text" id="name" onChange={updateName}/>

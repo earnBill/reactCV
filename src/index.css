@@ -2,14 +2,21 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    font-family: NotoSans, sans-serif;
 }
 
 header {
     text-align: center;
 }
 
+body {
+    background-color: #f3f4f6;
+}
 .container {
     background-color: #f3f4f6;
+    max-width: 1500px;
+    margin: auto;
+    
 }
 
 .main-container {
@@ -28,6 +35,7 @@ aside {
     margin: 20px;
     background-color: #f3f4f6;
     height: 100%;
+    max-width: 750px;
 }
 
 main {
@@ -35,6 +43,10 @@ main {
     display: flex;
     flex-direction: column;
     margin: 20px;
+}
+.resume-container {
+    height: 29.7cm;
+    width: 21;
 }
 
 footer {
@@ -81,6 +93,9 @@ button {
 
 input {
     background-color: #f3f4f6;
+    width: 100%;
+    border-radius: 20px;
+    padding: 10px;
 }
 
 .form-general-info {
@@ -100,5 +115,43 @@ input {
 }
 
 .resume-body {
-    padding: 20px;
+    padding:  0 55px;
+    margin-top: 40px;
+}
+
+button {
+    margin-top: 10px;
+    padding: 8px 16px;
+    border-radius: 5px;
+}
+
+h3 {
+    color: #0e374e;
+    text-align: center;
+    font-weight: 800;
+    font-size: 1.17em;
+    background-color: #f3f4f6;;
+    padding: 5px 0;
+}
+
+h2 {
+    font-weight: 800;
+}
+
+.education-section {
+    margin-top: 40px;
+}
+
+.education-info {
+    display: flex;
+    width: 100vh;
+    margin-bottom: 24px;
+}
+
+.education-info-study{
+    width: 20vh;
+}
+
+.education-info-school {
+    font-weight: 700;
 }
