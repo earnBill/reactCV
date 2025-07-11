@@ -8,7 +8,7 @@ export default function PracticalExperienceForm({updateCompany, updatePosition, 
           <label htmlFor="position">Position title</label>
           <input type="text" name="position" id="position" onChange={updatePosition}/>
           <label htmlFor="responsibilities">Responsibilities</label>
-          <input type="text" name="responsibilities" id="responsibilities" onChange={updateRespo}/>
+          <textarea name="responsibilities" id="responsibilities" rows={5} onChange={updateRespo}/>
           <label htmlFor="from">From</label>
           <input type="date" name="from" id="from" onChange={updateFrom}/>
           <label htmlFor="until">Until</label>

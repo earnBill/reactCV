@@ -12,30 +12,30 @@ header {
 body {
     background-color: #f3f4f6;
 }
-.container {
+.app {
     background-color: #f3f4f6;
-    max-width: 1500px;
-    margin: auto;
     
+   
 }
 
 .main-container {
     display: flex;
     justify-content:space-around;
     background-color: #f3f4f6;
+    max-width: 1500px;
+    margin: auto;
+    
 }
 
 aside {
     display: flex;
     flex-direction: column;
     align-items: left;
-    width: 40vw;
-    height: 100vh;
     padding: 10px;
-    margin: 20px;
     background-color: #f3f4f6;
     height: 100%;
-    max-width: 750px;
+    width: 100%;
+    max-width: 500px;
 }
 
 main {
@@ -46,7 +46,8 @@ main {
 }
 .resume-container {
     height: 29.7cm;
-    width: 21;
+    width: 21cm;
+    box-shadow:  0 13px 27px -5px rgba(50, 50, 93, .1), 0 8px 16px -8px rgba(0, 0, 0, .25);
 }
 
 footer {
@@ -77,14 +78,12 @@ button {
     background-color: #0e374e;
     color: white;
     text-align: center;
-    padding: 10px;
     width: 100%;
 }
 .personal-details {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    
 }
 
 .personal-details div {
@@ -94,13 +93,22 @@ button {
 input {
     background-color: #f3f4f6;
     width: 100%;
-    border-radius: 20px;
+    border-radius: 10px;
     padding: 10px;
+    margin: 5px 0;
+}
+
+textarea {
+    background-color: #f3f4f6;
+    border-radius: 10px;
+    border: none;
+    width: 100%;
 }
 
 .form-general-info {
     background-color: #f3f4f6;
 }
+
 
 .section-style {
     background-color: white;
@@ -132,6 +140,7 @@ h3 {
     font-size: 1.17em;
     background-color: #f3f4f6;;
     padding: 5px 0;
+    margin-bottom: 13px;
 }
 
 h2 {
@@ -142,16 +151,21 @@ h2 {
     margin-top: 40px;
 }
 
-.education-info {
+.education-info, .experience-info{
     display: flex;
     width: 100vh;
     margin-bottom: 24px;
 }
 
-.education-info-study{
+.education-info-study, .experience-date-section{
     width: 20vh;
+    margin-right: 10px;
 }
 
-.education-info-school {
+.education-info-schoolName, .experience-info-company {
     font-weight: 700;
+}
+
+.personal-info {
+    padding: 36px 24px;
 }

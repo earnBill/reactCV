@@ -14,11 +14,15 @@ function App() {
   const [respo, setRespo] = useState('');
   const [from, setFrom] = useState('')
   const [until,setUntil] = useState('')
+  const [showEduForm, setShowEduForm] = useState(false);
+  const [changeDisplay, setChangeDisplay] = useState('inline-block');
+  
   const [updateInfo, setUpdateInfo] = useState({
     general: { 
       name:"Jim Doee",
       email:"jimdoee@gmail.com",
       phone:"6988878785",
+      address:'Trikala,Greece'
     },
     education: [{
       schoolName:"IEK Diolkos",
@@ -35,7 +39,7 @@ function App() {
   });
 
   return (
-    <div className="container">
+    <div className="app">
       <header>
         <h1>CV Builder</h1>
       </header>
@@ -45,14 +49,18 @@ function App() {
               updateName={changeName} 
               updateEmail={changeMail}
               updatePhone={changePhone} 
-              editGeneralInfo={editGeneralInfo}
+              updateAddress={changeAddress}
             />
             <EducationExperienceForm 
+              displayStyle={changeDisplay}
+              enableEducationForm={changeEducationButton}
+              showEducationForm={showEduForm}
               updateSchool={changeSchool}
               updateStudy={changeStudy}
               updateDate={changeDate}
               updateEducation={updateEducationInfo} 
-              editEducation={editEducationInfo}
+              cancelEducation={cancelEducationInfo}
+              renderEducation={updateInfo}
             />
             <PracticalExperienceForm 
               updateCompany={changeCompany}
@@ -95,6 +103,16 @@ function App() {
     const newInfo = {...updateInfo, general: newPhone};
     setUpdateInfo(newInfo);
   }
+
+  function changeAddress(e) {
+    setUpdateInfo({...updateInfo, general:{...updateInfo.general, address: e.target.value}});
+  }
+
+  function changeEducationButton() {
+      setShowEduForm(true);
+      setChangeDisplay('none');
+  }
+
   function changeSchool(e) {
     setSchool(e.target.value);
     console.log(school);
@@ -116,9 +134,6 @@ function App() {
   function changeRespo(e) {
     setRespo(e.target.value);
   }
-  function editGeneralInfo(event) {
-    console.log("Edit general info");
-  }
   function changeFrom(e) {
     setFrom(e.target.value);
     console.log(e.target.value)
@@ -133,19 +148,17 @@ function App() {
       titleStudy: study, 
       dateStudy: date 
     }]; 
-    // newEducation[0] = {
-    //    ...newEducation[0], 
-    //   schoolName: school, 
-    //   titleStudy: study, 
-    //   dateStudy: date 
-    // };
     const newInfo = {...updateInfo, education: newEducation};
     setUpdateInfo(newInfo);
+    setShowEduForm(false);
+    setChangeDisplay('inline-block');
     console.log(updateInfo)
   }
 
-  function editEducationInfo(event) {
+  function cancelEducationInfo(event) {
     console.log('Edit education');
+    setShowEduForm(false);
+    setChangeDisplay('inline-block');
   }
 
   function updateExperienceInfo(event) {
@@ -169,6 +182,7 @@ function App() {
 
 
 export default App
+
 
  
  

@@ -7,6 +7,7 @@ export default function Resume({personalInfo, educationInfo, experienceInfo}) {
           <div className="personal-details">
             <div className="email">{personalInfo.email}</div> 
             <div className="phone">{personalInfo.phone}</div>
+            <div className="address">{personalInfo.address}</div>
           </div>
           
         </div>
@@ -37,12 +38,20 @@ export default function Resume({personalInfo, educationInfo, experienceInfo}) {
           <h3>Professional experience</h3>
           <div className="experience">
             {experienceInfo.map((exp, index) => {
+              if (index) {
               return (
-                <div key={index}>
-                  {exp.companyName}, {exp.positionTitle}, {exp.responsibilities}, 
-                  <div>{exp.from} {'-'} {exp.until}</div>
+                <div key={index} className="experience-info">
+                  <div className="experience-date-section">
+                    <p>{exp.from} {'-'} {exp.until}</p>
+                  </div> 
+                  <div className="experience-job-section">
+                    <p className="experience-info-company">{exp.companyName}</p>
+                    <p>{exp.positionTitle}</p>
+                    <p>{exp.responsibilities}</p>
+                  </div>
                 </div>
               );
+            }
             })}
           </div>
         </div>
