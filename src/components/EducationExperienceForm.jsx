@@ -21,7 +21,7 @@ export default function EducationExperienceForm({enableEducationForm, displaySty
     {renderEducation.education.map((ele,index) => {
       console.log(ele.schoolName);
       return (
-        <div key={index}>{ele.schoolName}</div>
+        <div key={index} className="education-entry">{ele.schoolName}</div>
       )
     })}
     </div>
