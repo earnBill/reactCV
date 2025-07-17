@@ -150,7 +150,7 @@ h2 {
 .education-section {
     margin-top: 40px;
 }
-.education-entry {
+.education-entry, .experience-entry {
     padding: 10px;
     border: 4px solid #f3f4f6;
     border-radius: 10px;

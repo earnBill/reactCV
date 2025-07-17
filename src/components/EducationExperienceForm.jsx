@@ -19,7 +19,7 @@ export default function EducationExperienceForm({enableEducationForm, displaySty
         : null
       }
     {renderEducation.education.map((ele,index) => {
-      console.log(ele.schoolName);
+      // console.log(ele.schoolName);
       return (
         <div key={index} className="education-entry">{ele.schoolName}</div>
       )

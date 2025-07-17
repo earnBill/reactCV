@@ -15,7 +15,9 @@ function App() {
   const [from, setFrom] = useState('')
   const [until,setUntil] = useState('')
   const [showEduForm, setShowEduForm] = useState(false);
-  const [changeDisplay, setChangeDisplay] = useState('inline-block');
+  const [changeDisplayEdu, setChangeDisplayEdu] = useState('inline-block');
+  const [showExpForm, setShowExpForm] = useState(false);
+  const [changeDisplayExp, setChangeDisplayExp] = useState('inline-block');
   
   const [updateInfo, setUpdateInfo] = useState({
     general: { 
@@ -52,7 +54,7 @@ function App() {
               updateAddress={changeAddress}
             />
             <EducationExperienceForm 
-              displayStyle={changeDisplay}
+              displayStyle={changeDisplayEdu}
               enableEducationForm={changeEducationButton}
               showEducationForm={showEduForm}
               updateSchool={changeSchool}
@@ -63,6 +65,9 @@ function App() {
               renderEducation={updateInfo}
             />
             <PracticalExperienceForm 
+              displayStyle={changeDisplayExp}
+              enableExperienceForm={changeExperienceButton}
+              showExperienceForm={showExpForm}
               updateCompany={changeCompany}
               updatePosition={changePosition}
               updateRespo={changeRespo}
@@ -70,6 +75,7 @@ function App() {
               updateUntil={changeUntil}
               updateExperience={updateExperienceInfo} 
               editExperience={editExperienceInfo}
+              renderExperience={updateInfo}
             />
         </aside>
         <main>
@@ -105,12 +111,15 @@ function App() {
   }
 
   function changeAddress(e) {
-    setUpdateInfo({...updateInfo, general:{...updateInfo.general, address: e.target.value}});
+    setUpdateInfo({...updateInfo, general:{
+                   ...updateInfo.general, 
+                   address: e.target.value}
+                  });
   }
 
   function changeEducationButton() {
       setShowEduForm(true);
-      setChangeDisplay('none');
+      setChangeDisplayEdu('none');
   }
 
   function changeSchool(e) {
@@ -151,14 +160,20 @@ function App() {
     const newInfo = {...updateInfo, education: newEducation};
     setUpdateInfo(newInfo);
     setShowEduForm(false);
-    setChangeDisplay('inline-block');
+    setChangeDisplayEdu('inline-block');
     console.log(updateInfo)
   }
 
   function cancelEducationInfo(event) {
     console.log('Edit education');
     setShowEduForm(false);
-    setChangeDisplay('inline-block');
+    setChangeDisplayEdu('inline-block');
+  }
+
+  function changeExperienceButton(event) {
+    console.log()
+    setShowExpForm('true');
+    setChangeDisplayExp('none');
   }
 
   function updateExperienceInfo(event) {
@@ -172,10 +187,14 @@ function App() {
                     until:until
                   }]})
     console.log(updateInfo);
+    setShowExpForm(false);
+    setChangeDisplayExp('inline-block')
   }
 
   function editExperienceInfo(event) {
     console.log('Edit experience');
+    setShowExpForm(false);
+    setChangeDisplayExp('inline-block')
   }
 
 }
