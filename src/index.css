@@ -45,8 +45,9 @@ main {
     margin: 20px;
 }
 .resume-container {
-    height: 29.7cm;
-    width: 21cm;
+    height: 1123px;
+    width: 794px;
+    background-color: white;
     box-shadow:  0 13px 27px -5px rgba(50, 50, 93, .1), 0 8px 16px -8px rgba(0, 0, 0, .25);
 }
 
@@ -115,11 +116,6 @@ textarea {
     border-radius: 20px;
     margin: 10px;
     padding: 10px;
-}
-
-.resume-container {
-    background-color: white;
-    height: 100%;
 }
 
 .resume-body {
