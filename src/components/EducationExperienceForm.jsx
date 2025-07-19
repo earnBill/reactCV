@@ -10,10 +10,13 @@ export default function EducationExperienceForm({
   studyIn,
   dateIn,
   deleteEducation, 
-  updateEducation, 
+  updateEducation,
+  updateExistingEducation, 
   cancelEducation, 
   renderEducation, 
-  editEducation
+  editEducation,
+  displayStyleOk,
+  displayStyleUpdate
 }) {
   return (
     <div className="education-section section-style">
@@ -27,7 +30,8 @@ export default function EducationExperienceForm({
           <input type="text" name="title-of-study" value={studyIn} id="title-of-study" onChange={updateStudy}/>
           <label htmlFor="date-of-study">Date of study</label>
           <input type="text" name="date-of-study" value={dateIn} id="date-of-study" onChange={updateDate}/>
-          <button type="button" onClick={updateEducation}>Ok</button>
+          <button type="button" onClick={updateEducation} style={{display : displayStyleOk}}>Ok</button>
+          <button type="button" onClick={updateExistingEducation} style={{display : displayStyleUpdate}}>Update</button>
           <button type="button" onClick={cancelEducation}>Cancel</button>
           <button type="button" onClick={deleteEducation}>Delete</button>
         </form>

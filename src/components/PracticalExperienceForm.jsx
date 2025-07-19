@@ -11,7 +11,8 @@ export default function PracticalExperienceForm({
   positionIn,
   fromIn,
   untilIn, 
-  updateExperience, 
+  updateExperience,
+  updateExistExperience, 
   cancelExperience, 
   deleteExperience, 
   renderExperience, 
@@ -34,6 +35,7 @@ export default function PracticalExperienceForm({
             <label htmlFor="until">Until</label>
             <input type="date" name="until" id="until" value={untilIn} onChange={updateUntil}/>
             <button onClick={updateExperience}>Ok</button>
+            <button onClick={updateExistExperience}>Update</button>
             <button onClick={cancelExperience}>Cancel</button>
             <button onClick={deleteExperience}>Delete</button>
         </form>

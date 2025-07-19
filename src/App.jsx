@@ -18,6 +18,8 @@ function App() {
   const [changeDisplayEdu, setChangeDisplayEdu] = useState('block');
   const [showExpForm, setShowExpForm] = useState(false);
   const [changeDisplayExp, setChangeDisplayExp] = useState('block');
+  const [changeDisplayOk, setChangeDisplayOk] = useState('block');
+  const [changeDisplayUpdate, setChangeDisplayUpdate] = useState('none')
   
   const [updateInfo, setUpdateInfo] = useState({
     general: { 
@@ -67,6 +69,8 @@ function App() {
               schoolNameIn={school}
               studyIn={study}
               dateIn={date}
+              displayStyleOk={changeDisplayOk}
+              displayStyleUpdate={changeDisplayUpdate}
             />
             <PracticalExperienceForm 
               displayStyle={changeDisplayExp}
@@ -129,6 +133,8 @@ function App() {
   function changeEducationButton() {
       setShowEduForm(true);
       setChangeDisplayEdu('none');
+      setChangeDisplayUpdate('none');
+      setChangeDisplayOk('inline-block');
   }
 
   function changeSchool(e) {
@@ -169,14 +175,15 @@ function App() {
     const newInfo = {...updateInfo, education: newEducation};
     setUpdateInfo(newInfo);
     setShowEduForm(false);
-    setChangeDisplayEdu('block');
+    setChangeDisplayEdu('inline-block');
+    setChangeDisplayOk('inline-block');
     console.log(updateInfo)
   }
 
   function cancelEducationInfo(event) {
     console.log('Edit education');
     setShowEduForm(false);
-    setChangeDisplayEdu('block');
+    setChangeDisplayEdu('inline-block');
   }
 
   function editEducationInfo(e) {
@@ -191,6 +198,8 @@ function App() {
    })
     setShowEduForm(true);
     setChangeDisplayEdu('none');
+    setChangeDisplayOk('none');
+    setChangeDisplayUpdate('inline-block');
   }
 
   function changeExperienceButton(event) {
@@ -211,13 +220,13 @@ function App() {
                   }]})
     console.log(updateInfo);
     setShowExpForm(false);
-    setChangeDisplayExp('block')
+    setChangeDisplayExp('inline-block')
   }
 
   function cancelExperienceInfo(event) {
     console.log('Edit experience');
     setShowExpForm(false);
-    setChangeDisplayExp('block')
+    setChangeDisplayExp('inline-block')
   }
 
   function editExperienceInfo(e) {
@@ -233,6 +242,8 @@ function App() {
     })
     setShowExpForm(true);
     setChangeDisplayExp('none');
+    setChangeDisplayOk('none')
+    setChangeDisplayUpdate('inline-block');
   }
 }
 
