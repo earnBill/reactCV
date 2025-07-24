@@ -21,6 +21,7 @@ function App() {
   const [changeDisplayOk, setChangeDisplayOk] = useState('block');
   const [changeDisplayUpdate, setChangeDisplayUpdate] = useState('none')
   
+  
   const [updateInfo, setUpdateInfo] = useState({
     general: { 
       name:"Jim Doee",
@@ -84,11 +85,15 @@ function App() {
               updateExperience={updateExperienceInfo}
               companyIn={company}
               positionIn={position}
+              respoIn={respo}
               fromIn={from}
               untilIn={until} 
               cancelExperience={cancelExperienceInfo}
               renderExperience={updateInfo}
               editExperience={editExperienceInfo}
+              updateExistExperience={updateExistExperienceInfo}
+              displayStyleOk={changeDisplayOk}
+              displayStyleUpdate={changeDisplayUpdate}
             />
         </aside>
         <main>
@@ -193,6 +198,8 @@ function App() {
       if(ele.schoolName === e.target.textContent) {
         console.log(ele.schoolName)
         setSchool(ele.schoolName)
+        setStudy(ele.titleStudy)
+        setDate(ele.dateStudy)
         console.log('sadsad')
       }
    })
@@ -204,8 +211,10 @@ function App() {
 
   function changeExperienceButton(event) {
     console.log()
-    setShowExpForm('true');
+    setShowExpForm(true);
     setChangeDisplayExp('none');
+    setChangeDisplayUpdate('none')
+    console.log(changeDisplayExp);
   }
 
   function updateExperienceInfo(event) {
@@ -221,6 +230,7 @@ function App() {
     console.log(updateInfo);
     setShowExpForm(false);
     setChangeDisplayExp('inline-block')
+    setChangeDisplayUpdate('none');
   }
 
   function cancelExperienceInfo(event) {
@@ -231,21 +241,45 @@ function App() {
 
   function editExperienceInfo(e) {
     console.log('edit experience');
-    updateInfo.experience.map(ele => {
+    updateInfo.experience.find(ele => {
       if(ele.companyName === e.target.textContent) {
         setCompany(ele.companyName);
         setPosition(ele.positionTitle);
         setRespo(ele.responsibilities);
         setFrom(ele.from);
         setUntil(ele.until);
+        console.log(ele.responsibilities);
       }
+     
     })
     setShowExpForm(true);
     setChangeDisplayExp('none');
-    setChangeDisplayOk('none')
+    setChangeDisplayOk('none');
     setChangeDisplayUpdate('inline-block');
   }
+
+  function updateExistExperienceInfo(e) {
+    const updatedExperience = updateInfo.experience.map(ele => {
+      if (ele.companyName === e.target.textContent) { 
+        return {
+          ...ele, 
+          companyName: company,
+          positionTitle: position,
+          responsibilities: respo,
+          from: from,
+          until: until
+        }
+      }
+      return ele;
+    })
+    console.log('change experience')
+    console.log(updatedExperience);
+    setUpdateInfo({...updateInfo,experience:[...updatedExperience]});
+    
 }
+
+}
+
 
 
 export default App

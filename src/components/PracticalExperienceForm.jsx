@@ -9,10 +9,13 @@ export default function PracticalExperienceForm({
   updateUntil,
   companyIn,
   positionIn,
+  respoIn,
   fromIn,
   untilIn, 
   updateExperience,
   updateExistExperience, 
+  displayStyleOk,
+  displayStyleUpdate,
   cancelExperience, 
   deleteExperience, 
   renderExperience, 
@@ -29,15 +32,15 @@ export default function PracticalExperienceForm({
             <label htmlFor="position">Position title</label>
             <input type="text" name="position" id="position" value={positionIn} onChange={updatePosition}/>
             <label htmlFor="responsibilities">Responsibilities</label>
-            <textarea name="responsibilities" id="responsibilities" rows={5} onChange={updateRespo}/>
+            <textarea name="responsibilities" id="responsibilities" value ={respoIn} rows={5} onChange={updateRespo}/>
             <label htmlFor="from">From</label>
             <input type="date" name="from" id="from" value={fromIn} onChange={updateFrom}/>
             <label htmlFor="until">Until</label>
             <input type="date" name="until" id="until" value={untilIn} onChange={updateUntil}/>
-            <button onClick={updateExperience}>Ok</button>
-            <button onClick={updateExistExperience}>Update</button>
-            <button onClick={cancelExperience}>Cancel</button>
-            <button onClick={deleteExperience}>Delete</button>
+            <button type="button" onClick={updateExperience} style={{display : displayStyleOk}}>Ok</button>
+            <button type="button" onClick={updateExistExperience} style={{display : displayStyleUpdate}}>Update</button>
+            <button type="button" onClick={cancelExperience}>Cancel</button>
+            <button type="button" onClick={deleteExperience}>Delete</button>
         </form>
         : null
         }
