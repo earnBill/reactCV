@@ -22,6 +22,9 @@ function App() {
   const [changeDisplayUpdate, setChangeDisplayUpdate] = useState('none')
   
   
+  const [experienceId, setExperienceId] = useState('');
+  const [educationId, setUEducationId] = useState('');
+
   const [updateInfo, setUpdateInfo] = useState({
     general: { 
       name:"Jim Doee",
@@ -67,6 +70,7 @@ function App() {
               cancelEducation={cancelEducationInfo}
               renderEducation={updateInfo}
               editEducation={editEducationInfo}
+              updateExistingEducation={updateExistingEducationInfo}
               schoolNameIn={school}
               studyIn={study}
               dateIn={date}
@@ -189,6 +193,9 @@ function App() {
     console.log('Edit education');
     setShowEduForm(false);
     setChangeDisplayEdu('inline-block');
+    setSchool('');
+    setStudy('');
+    setDate('');
   }
 
   function editEducationInfo(e) {
@@ -207,6 +214,10 @@ function App() {
     setChangeDisplayEdu('none');
     setChangeDisplayOk('none');
     setChangeDisplayUpdate('inline-block');
+  }
+
+  function updateExistingEducationInfo(e) {
+    console.log('update existing education ');
   }
 
   function changeExperienceButton(event) {
@@ -237,10 +248,17 @@ function App() {
     console.log('Edit experience');
     setShowExpForm(false);
     setChangeDisplayExp('inline-block')
+    setCompany('');
+    setPosition('');
+    setRespo('');
+    setFrom('');
+    setUntil('');
   }
 
   function editExperienceInfo(e) {
+    setExperienceId (e.target.textContent);
     console.log('edit experience');
+    console.log(experienceId);
     updateInfo.experience.find(ele => {
       if(ele.companyName === e.target.textContent) {
         setCompany(ele.companyName);
@@ -260,7 +278,7 @@ function App() {
 
   function updateExistExperienceInfo(e) {
     const updatedExperience = updateInfo.experience.map(ele => {
-      if (ele.companyName === e.target.textContent) { 
+      if (ele.companyName === experienceId) { 
         return {
           ...ele, 
           companyName: company,
@@ -273,8 +291,9 @@ function App() {
       return ele;
     })
     console.log('change experience')
-    console.log(updatedExperience);
     setUpdateInfo({...updateInfo,experience:[...updatedExperience]});
+    setShowExpForm(false);
+    setChangeDisplayExp('inline-block');
     
 }
 
