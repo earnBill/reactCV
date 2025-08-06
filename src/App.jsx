@@ -6,6 +6,8 @@ import { useState } from "react";
 
 
 function App() {
+  const [eduId, setEduId] = useState(1);
+  const [expId, setExpId] = useState(1);
   const [school, setSchool] = useState('');
   const [study, setStudy] = useState('');
   const [date, setDate] = useState('');
@@ -33,11 +35,13 @@ function App() {
       address:'Trikala,Greece'
     },
     education: [{
+      id: eduId,
       schoolName:"IEK Diolkos",
       titleStudy:"Software Dveloper",
       dateStudy:"2004",
     }],
     experience: [{
+      id: expId,
       companyName:"Microsoft",
       positionTitle:"Developer",
       responsibilities:"Create software",
@@ -45,7 +49,7 @@ function App() {
       until:"",
     }]
   });
-
+  console.log(updateInfo);
   return (
     <div className="app">
       <header>
@@ -176,7 +180,10 @@ function App() {
   }
   function updateEducationInfo(event) {
     console.log('Update education');
+    const newEduId = eduId + 1;
+    setEduId(newEduId);
     const newEducation = [...updateInfo.education, {
+      id: newEduId,
       schoolName: school, 
       titleStudy: study, 
       dateStudy: date 
@@ -187,27 +194,26 @@ function App() {
     setChangeDisplayEdu('inline-block');
     setChangeDisplayOk('inline-block');
     console.log(updateInfo)
+    clearEducationFields();
   }
 
   function cancelEducationInfo(event) {
     console.log('Edit education');
     setShowEduForm(false);
     setChangeDisplayEdu('inline-block');
-    setSchool('');
-    setStudy('');
-    setDate('');
+    clearEducationFields();
   }
 
   function editEducationInfo(e) {
     console.log('edit education');
-    console.log(e.target.textContent)
+    console.log(e.target.id);
+    setUEducationId(e.target.textContent)
     updateInfo.education.map(ele => {
-      if(ele.schoolName === e.target.textContent) {
+      if(ele.id == e.target.id) {
         console.log(ele.schoolName)
         setSchool(ele.schoolName)
         setStudy(ele.titleStudy)
         setDate(ele.dateStudy)
-        console.log('sadsad')
       }
    })
     setShowEduForm(true);
@@ -217,21 +223,42 @@ function App() {
   }
 
   function updateExistingEducationInfo(e) {
+    const newEditEducation = updateInfo.education.map(ele => {
+      if (ele.schoolName === educationId) {
+        console.log('its same education')
+        return {
+          ...ele,
+          schoolName: school,
+          titleStudy: study,
+          dateStudy: date
+        }
+      }
+      return ele;
+    })
     console.log('update existing education ');
+    setUpdateInfo({...updateInfo, education:[...newEditEducation]})
+    setShowEduForm(false);
+    setChangeDisplayEdu('block');
+    clearEducationFields();
+    
   }
 
   function changeExperienceButton(event) {
     console.log()
     setShowExpForm(true);
     setChangeDisplayExp('none');
-    setChangeDisplayUpdate('none')
+    setChangeDisplayUpdate('none');
+    setChangeDisplayOk('inline-block');
     console.log(changeDisplayExp);
   }
 
   function updateExperienceInfo(event) {
     console.log('Update experience');
+    const newExpId = expId + 1;
+    setExpId(newExpId);
     setUpdateInfo({...updateInfo,
                   experience:[...updateInfo.experience,{
+                    id: newExpId,
                     companyName: company,
                     positionTitle: position,
                     responsibilities: respo,
@@ -248,11 +275,7 @@ function App() {
     console.log('Edit experience');
     setShowExpForm(false);
     setChangeDisplayExp('inline-block')
-    setCompany('');
-    setPosition('');
-    setRespo('');
-    setFrom('');
-    setUntil('');
+    clearExperienceFields();
   }
 
   function editExperienceInfo(e) {
@@ -260,7 +283,7 @@ function App() {
     console.log('edit experience');
     console.log(experienceId);
     updateInfo.experience.find(ele => {
-      if(ele.companyName === e.target.textContent) {
+      if(ele.id == e.target.id) {
         setCompany(ele.companyName);
         setPosition(ele.positionTitle);
         setRespo(ele.responsibilities);
@@ -294,12 +317,23 @@ function App() {
     setUpdateInfo({...updateInfo,experience:[...updatedExperience]});
     setShowExpForm(false);
     setChangeDisplayExp('inline-block');
-    
+    clearExperienceFields();
 }
+  function clearEducationFields() {
+    setSchool('');
+    setStudy('');
+    setDate('');
+  }
+
+  function clearExperienceFields() {
+    setCompany('');
+    setPosition('');
+    setRespo('');
+    setFrom('');
+    setUntil('');
+  }
 
 }
-
-
 
 export default App
 

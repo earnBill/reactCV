@@ -40,7 +40,7 @@ export default function EducationExperienceForm({
     {renderEducation.education.map((ele,index) => {
       // console.log(ele.schoolName);
       return (
-        <div key={index} style={{display:displayStyle}} onClick={editEducation} className="education-entry">{ele.schoolName}</div>
+        <div key={index} style={{display:displayStyle}} onClick={editEducation} className="education-entry" id={ele.id}>{ele.schoolName}</div>
       )
     })}
     </div>

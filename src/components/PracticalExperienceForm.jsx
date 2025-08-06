@@ -47,7 +47,7 @@ export default function PracticalExperienceForm({
         {console.log(renderExperience)}
         {renderExperience.experience.map((ele,index) => {
           return (
-            <div key={index} onClick={editExperience} style={{display:displayStyle}} className="experience-entry">{ele.companyName}</div>  
+            <div key={index} onClick={editExperience} style={{display:displayStyle}} className="experience-entry" id={ele.id}>{ele.companyName}</div>  
           )
         })
         }

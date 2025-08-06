@@ -45,7 +45,7 @@ main {
     margin: 20px;
 }
 .resume-container {
-    height: 1123px;
+    min-height: 1123px;
     width: 794px;
     background-color: white;
     box-shadow:  0 13px 27px -5px rgba(50, 50, 93, .1), 0 8px 16px -8px rgba(0, 0, 0, .25);
