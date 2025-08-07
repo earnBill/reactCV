@@ -17,9 +17,9 @@ function App() {
   const [from, setFrom] = useState('')
   const [until,setUntil] = useState('')
   const [showEduForm, setShowEduForm] = useState(false);
-  const [changeDisplayEdu, setChangeDisplayEdu] = useState('block');
+  const [changeDisplayEdu, setChangeDisplayEdu] = useState('inline-block');
   const [showExpForm, setShowExpForm] = useState(false);
-  const [changeDisplayExp, setChangeDisplayExp] = useState('block');
+  const [changeDisplayExp, setChangeDisplayExp] = useState('inline-block');
   const [changeDisplayOk, setChangeDisplayOk] = useState('block');
   const [changeDisplayUpdate, setChangeDisplayUpdate] = useState('none')
   
@@ -74,6 +74,7 @@ function App() {
               cancelEducation={cancelEducationInfo}
               renderEducation={updateInfo}
               editEducation={editEducationInfo}
+              deleteEducation={deleteEducationInfo}
               updateExistingEducation={updateExistingEducationInfo}
               schoolNameIn={school}
               studyIn={study}
@@ -121,7 +122,6 @@ function App() {
     const newInfo = {...updateInfo, general: newName}
     setUpdateInfo(newInfo);
     // setUpdateInfo({...updateInfo, general :{...updateInfo.general, name: e.target.value}}); 
-    console.log(e.target.value);
     console.log('Update general info')
   }
 
@@ -152,15 +152,12 @@ function App() {
 
   function changeSchool(e) {
     setSchool(e.target.value);
-    console.log(school);
   }
   function changeStudy(e) {
     setStudy(e.target.value);
-    console.log(study); 
   }
   function changeDate(e) {
     setDate(e.target.value);
-    console.log(date);
   }
   function changeCompany(e) {
     setCompany(e.target.value);
@@ -173,12 +170,11 @@ function App() {
   }
   function changeFrom(e) {
     setFrom(e.target.value);
-    console.log(e.target.value)
   }
   function changeUntil(e) {
     setUntil(e.target.value);
   }
-  function updateEducationInfo(event) {
+  function updateEducationInfo() {
     console.log('Update education');
     const newEduId = eduId + 1;
     setEduId(newEduId);
@@ -193,12 +189,11 @@ function App() {
     setShowEduForm(false);
     setChangeDisplayEdu('inline-block');
     setChangeDisplayOk('inline-block');
-    console.log(updateInfo)
     clearEducationFields();
   }
 
   function cancelEducationInfo(event) {
-    console.log('Edit education');
+    console.log('cancel education');
     setShowEduForm(false);
     setChangeDisplayEdu('inline-block');
     clearEducationFields();
@@ -206,11 +201,9 @@ function App() {
 
   function editEducationInfo(e) {
     console.log('edit education');
-    console.log(e.target.id);
-    setUEducationId(e.target.textContent)
+    setUEducationId(e.target.id)
     updateInfo.education.map(ele => {
       if(ele.id == e.target.id) {
-        console.log(ele.schoolName)
         setSchool(ele.schoolName)
         setStudy(ele.titleStudy)
         setDate(ele.dateStudy)
@@ -224,7 +217,7 @@ function App() {
 
   function updateExistingEducationInfo(e) {
     const newEditEducation = updateInfo.education.map(ele => {
-      if (ele.schoolName === educationId) {
+      if (ele.id == educationId) {
         console.log('its same education')
         return {
           ...ele,
@@ -238,18 +231,32 @@ function App() {
     console.log('update existing education ');
     setUpdateInfo({...updateInfo, education:[...newEditEducation]})
     setShowEduForm(false);
-    setChangeDisplayEdu('block');
+    setChangeDisplayEdu('inline-block');
     clearEducationFields();
     
   }
 
+  function deleteEducationInfo() {
+    console.log('delete education');
+    console.log(educationId);
+    const newEducation = updateInfo.education.filter(ele => {
+      if (ele.id != educationId) {
+        console.log(ele);
+        return ele;
+      } 
+    })
+    console.log(newEducation);
+    setUpdateInfo({...updateInfo, education:[...newEducation]});
+    setShowEduForm(false);
+    setChangeDisplayEdu('inline-block');
+    clearEducationFields();
+  }
+
   function changeExperienceButton(event) {
-    console.log()
     setShowExpForm(true);
     setChangeDisplayExp('none');
     setChangeDisplayUpdate('none');
     setChangeDisplayOk('inline-block');
-    console.log(changeDisplayExp);
   }
 
   function updateExperienceInfo(event) {
@@ -265,10 +272,10 @@ function App() {
                     from:from,
                     until:until
                   }]})
-    console.log(updateInfo);
     setShowExpForm(false);
     setChangeDisplayExp('inline-block')
     setChangeDisplayUpdate('none');
+    clearExperienceFields();
   }
 
   function cancelExperienceInfo(event) {
@@ -279,9 +286,8 @@ function App() {
   }
 
   function editExperienceInfo(e) {
-    setExperienceId (e.target.textContent);
+    setExperienceId (e.target.id);
     console.log('edit experience');
-    console.log(experienceId);
     updateInfo.experience.find(ele => {
       if(ele.id == e.target.id) {
         setCompany(ele.companyName);
@@ -289,7 +295,6 @@ function App() {
         setRespo(ele.responsibilities);
         setFrom(ele.from);
         setUntil(ele.until);
-        console.log(ele.responsibilities);
       }
      
     })
@@ -301,7 +306,7 @@ function App() {
 
   function updateExistExperienceInfo(e) {
     const updatedExperience = updateInfo.experience.map(ele => {
-      if (ele.companyName === experienceId) { 
+      if (ele.id == experienceId) { 
         return {
           ...ele, 
           companyName: company,
