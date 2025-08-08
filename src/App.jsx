@@ -2,10 +2,12 @@ import GeneralInfoForm from "./components/GeneralInfoForm";
 import EducationExperienceForm from "./components/EducationExperienceForm";
 import PracticalExperienceForm from "./components/PracticalExperienceForm";
 import Resume from "./components/Resume";
+import Sidebar from "./components/sidebar";
 import { useState } from "react";
 
 
 function App() {
+  const [color, setColor] = useState('#0e374e')
   const [eduId, setEduId] = useState(1);
   const [expId, setExpId] = useState(1);
   const [school, setSchool] = useState('');
@@ -45,8 +47,8 @@ function App() {
       companyName:"Microsoft",
       positionTitle:"Developer",
       responsibilities:"Create software",
-      from:"",
-      until:"",
+      from:"08/2010",
+      until:"10/2025",
     }]
   });
   console.log(updateInfo);
@@ -57,11 +59,19 @@ function App() {
       </header>
       <div className="main-container">
         <aside>
+            <Sidebar
+              mainColor={color}
+              changeColor={changeColorValue}
+            />
             <GeneralInfoForm 
               updateName={changeName} 
               updateEmail={changeMail}
               updatePhone={changePhone} 
               updateAddress={changeAddress}
+              nameValue={updateInfo.general.name}
+              emailValue={updateInfo.general.email}
+              phoneValue={updateInfo.general.phone}
+              addressValue={updateInfo.general.address}
             />
             <EducationExperienceForm 
               displayStyle={changeDisplayEdu}
@@ -110,13 +120,18 @@ function App() {
             personalInfo={updateInfo.general}
             educationInfo={updateInfo.education}
             experienceInfo={updateInfo.experience}
+            resumeTopColor={color}
             />
         </main>
       </div>
             <footer>Bill Tas 2025</footer>
     </div>
     );
-  
+  function changeColorValue(e) {
+    setColor(e.target.value);
+    console.log(e.target.value)
+  }
+
   function changeName(e) {
     const newName = {...updateInfo.general, name: e.target.value}
     const newInfo = {...updateInfo, general: newName}

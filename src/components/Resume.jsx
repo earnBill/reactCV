@@ -1,7 +1,12 @@
-export default function Resume({personalInfo, educationInfo, experienceInfo}) {
+export default function Resume({
+  personalInfo, 
+  educationInfo, 
+  experienceInfo,
+  resumeTopColor
+}) {
   return (
     <div className="resume-container">
-      <div className="resume-top">
+      <div className="resume-top" style={{backgroundColor : resumeTopColor}}>
         <div className="personal-info">
           <h1>{personalInfo.name}</h1>
           <div className="personal-details">
@@ -9,7 +14,6 @@ export default function Resume({personalInfo, educationInfo, experienceInfo}) {
             <div className="phone">{personalInfo.phone}</div>
             <div className="address">{personalInfo.address}</div>
           </div>
-          
         </div>
       </div>
       <div className="resume-body">
@@ -17,7 +21,6 @@ export default function Resume({personalInfo, educationInfo, experienceInfo}) {
           <h3>Education</h3>
           <div className="education">
             {educationInfo.map((educ, index) => {
-              if(index) {
                 return (
                 <div key={index} className="education-info">
                   <div className="education-study-section">
@@ -26,11 +29,9 @@ export default function Resume({personalInfo, educationInfo, experienceInfo}) {
                   <div className="education-school-section">
                     <p className="education-info-schoolName">{educ.schoolName}</p> 
                     <p className="education-info-study">{educ.titleStudy}</p>
-                  </div>
-                   
+                  </div>  
                 </div>
                 );
-              }
             })}    
           </div>
         </div>
@@ -38,7 +39,7 @@ export default function Resume({personalInfo, educationInfo, experienceInfo}) {
           <h3>Professional experience</h3>
           <div className="experience">
             {experienceInfo.map((exp, index) => {
-              if (index) {
+              
               return (
                 <div key={index} className="experience-info">
                   <div className="experience-date-section">
@@ -51,7 +52,7 @@ export default function Resume({personalInfo, educationInfo, experienceInfo}) {
                   </div>
                 </div>
               );
-            }
+            
             })}
           </div>
         </div>

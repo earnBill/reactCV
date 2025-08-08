@@ -33,10 +33,10 @@ export default function PracticalExperienceForm({
             <input type="text" name="position" id="position" value={positionIn} onChange={updatePosition}/>
             <label htmlFor="responsibilities">Responsibilities</label>
             <textarea name="responsibilities" id="responsibilities" value ={respoIn} rows={5} onChange={updateRespo}/>
-            <label htmlFor="from">From</label>
-            <input type="date" name="from" id="from" value={fromIn} onChange={updateFrom}/>
-            <label htmlFor="until">Until</label>
-            <input type="date" name="until" id="until" value={untilIn} onChange={updateUntil}/>
+            <label htmlFor="from">Start Date</label>
+            <input type="text" name="from" id="from" value={fromIn} onChange={updateFrom}/>
+            <label htmlFor="until">End Date</label>
+            <input type="text" name="until" id="until" value={untilIn} onChange={updateUntil}/>
             <button type="button" onClick={updateExperience} style={{display : displayStyleOk}}>Ok</button>
             <button type="button" onClick={updateExistExperience} style={{display : displayStyleUpdate}}>Update</button>
             <button type="button" onClick={cancelExperience}>Cancel</button>
