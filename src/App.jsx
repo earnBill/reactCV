@@ -2,7 +2,7 @@ import GeneralInfoForm from "./components/GeneralInfoForm";
 import EducationExperienceForm from "./components/EducationExperienceForm";
 import PracticalExperienceForm from "./components/PracticalExperienceForm";
 import Resume from "./components/Resume";
-import Sidebar from "./components/sidebar";
+import Sidebar from "./components/Sidebar";
 import { useState } from "react";
 
 
